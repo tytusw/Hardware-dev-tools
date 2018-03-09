@@ -11,10 +11,10 @@ E_dico = {"E3":E3,"E6":E6,"E12":E12,"E24":E24,"E48":E48,"E96":E96}
 E_list = ["E3","E6","E12","E24","E48","E96"]
 """
 Parametres:
- - tension d'entrÃƒÂ©e
- - tension de sortie
- - courant consommÃƒÂ©
- - tolÃƒÂ©rance
+ - Input Voltage
+ - Output Voltage
+ - Calculation tolerance
+ - to complet...
 
  Vout = Vin * (R2 / R1 + R2)
  k = (R2 / R1 + R2) = Vout / Vin
@@ -72,7 +72,7 @@ def R_compute(Vin,Vout,Tol,E,E_str,Tol_R):
         voutnom = Vin * (r2_tmp / (r1_tmp + r2_tmp))
         voutmin = Vin * (r2_min / (r1_max + r2_min))
         voutmax = Vin * (r2_max / (r1_min + r2_max))
-        print("The best result in Serie",E_str,"is -> R1 = %.2f"% r1_tmp,", R2 =%.2f"% r2_tmp,", Error = %.2f" % (err_prev*100),"%")
+        print("The best result in Serie",E_str,"is -> R1 = %.2f"% r1_tmp,", R2 =%.2f"% r2_tmp,", k =%.4f"% (r2_tmp/(r1_tmp + r2_tmp)),", Error = %.2f" % (err_prev*100),"%")
         print("Vout nominal = %.3f"% voutnom,"V, Vout min = %.3f"% voutmin,"V, Vout max =  %.3f"% voutmax,"V")
         print("")
     else:
@@ -81,10 +81,10 @@ def R_compute(Vin,Vout,Tol,E,E_str,Tol_R):
 
 
 #Parameters
-Vin = 60 # Voltage input in Volt
+Vin = 12 # Voltage input in Volt
 Vout = 2.7# Voltage output in Volt
-Tol = 0.01 # tolerance sur Vout
-Tol_R = 0.01 # Resistor tolerance
+Tol = 0.001 # tolerance sur Vout
+Tol_R = 0.001 # Resistor tolerance
 #End Parameters
 
 i = 0
